@@ -27,17 +27,36 @@ client.on('message',msg =>{			//msg is the msg.content that we receive from user
 	const args = msg.content.slice(prefix.length).trim().split(/ +/); // we are using regex while splitting bcos  using ' ' simply would fail when user enters multiple consecutive spaces
 	const commandName = args.shift().toLowerCase(); //this variable has first word of command ie the command name.
 
-	if(!client.commands.has(commandName)) return; //if we dont have any file in commands folder with name same as commandname then we simply return;
-	const command = client.commands.get(commandName); // this makes a get request to the file commands/commandName.js
+	 //if we dont have any file in commands folder with name or aliases as commandname then we simply return
+	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName)); // this makes a get request to the file commands/commandName.js
+
+	if(!command)return;
+	if(command.guildOnly && message.channel.type == 'dm'){
+		return msg.reply("This command can only be used in Guilds.")
+	}
+
+	if(command.args && !args.length){
+           
+		let reply = "Please provide arguments!"
+		if(command.usage){
+			reply += `, Proper use: ${command.usage}`
+		}
+		return msg.reply(reply);
+
+	}
 
 	// if(!args.length){ // if arguments are not given after prefix commandname then we enter this if statement use it in commands/command.js file of yours if command you want to execute must have arguments. Can't use it here globally because some commands may be without arguments as well
 	// 	return msg.channel.send('Not enough arguments');
 	// }
 	try{
-		command.execute(msg,args);	//try to execute the command
+		console.log(command);
+		command.execute(msg, args, client);	//try to execute the command
 	} catch(error){					// if fail to execute the command then we come here
 		console.error(error);
 		msg.reply(`Opps sorry can't execute the command`);
 	}
 	
+});
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error);
 });
