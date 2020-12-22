@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const ytdl = require('ytdl-core');	
 
 const fs = require('fs');			//to read from file systems
 require('dotenv').config();			//to hide bot token
@@ -31,7 +32,7 @@ client.on('message',msg =>{			//msg is the msg.content that we receive from user
 	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName)); // this makes a get request to the file commands/commandName.js
 
 	if(!command)return;
-	if(command.guildOnly && message.channel.type == 'dm'){
+	if(command.guildOnly && msg.channel.type == 'dm'){
 		return msg.reply("This command can only be used in Guilds.")
 	}
 
@@ -49,7 +50,7 @@ client.on('message',msg =>{			//msg is the msg.content that we receive from user
 	// 	return msg.channel.send('Not enough arguments');
 	// }
 	try{
-		console.log(command);
+	//	console.log(command);
 		command.execute(msg, args, client);	//try to execute the command
 	} catch(error){					// if fail to execute the command then we come here
 		console.error(error);

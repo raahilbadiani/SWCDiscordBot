@@ -1,7 +1,7 @@
 const { prefix } = require("../config.json");
 module.exports = {
 	name: "ping",
-	description: `ping command responds to ${prefix}ping with pong and time.!`,
+	description: `ping command responds to ping with pong and fetch time!`,
 	aliases: ['test'],
 	args: false,
 	guildOnly:  false,
