@@ -8,9 +8,12 @@ const {prefix} = require('./config.json');//prefix variable defined in config fi
 
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));						//read into all .js files in commands folder
+const roleClaim = require('./commands/role-claim');
+
 
 client.once('ready',()=>{
 	console.log('Bot is online!');
+	roleClaim(client);
 });
 
 client.login(token);
