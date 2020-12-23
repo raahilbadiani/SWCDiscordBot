@@ -21,6 +21,10 @@ for(const file of commandFiles){	//commandfiles has all the files which are ther
 	client.commands.set(command.name,command);
 }
 
+client.on('guildMemberAdd',member =>{
+	member.send('Welcome to SWC disord server 😊');
+});
+
 client.on('message',msg =>{			//msg is the msg.content that we receive from user
 	if(!msg.content.startsWith(prefix)||msg.author.bot) return; 
 	//if msg did not start with prefix set by us or msg wee read was written by a  bot then we simply ignore it.
