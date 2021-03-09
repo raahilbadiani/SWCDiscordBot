@@ -21,8 +21,14 @@ for(const file of commandFiles){
 	client.commands.set(command.name,command);
 }
 
-client.on('message',msg =>{			
-	
+
+//=======
+client.on('guildMemberAdd',member =>{
+	member.send('Welcome to SWC disord server 😊');
+});
+
+client.on('message',msg =>{			//msg is the msg.content that we receive from user
+//>>>>>>> main
 	if(!msg.content.startsWith(prefix)||msg.author.bot) return; 
 	
 	
