@@ -8,6 +8,7 @@ module.exports = {
 	guildOnly: true,
 	usage: `\`${prefix}exit\``,
 	async execute(msg) {
-        msg.member.voice.channel.leave();
+		msg.member.voice.channel.leave();
+		msg.channel.send("GoodBye! :)");
 	},
 };
