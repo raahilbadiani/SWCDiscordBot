@@ -38,27 +38,29 @@ module.exports = {
             //console.log(listOfCommands);
 
             const parentEmbed = {
-                author: {
-                    name: 'SWCBot',
-                    icon_url: 'https://cutt.ly/YkcEYaG',
-                    url: 'https://discord.js.org',
-                },
-                color : 0x7ae5f5,
-                title : 'HELP',
-                description : `A list of all commands!, To know about a command , use \`${prefix}help command_name\`  :)`,
-                fields: listOfCommands,
-                timestamp : new Date(),
-                footer: {
-                    text: 'SWCDiscordBot',
-                }
-            }
+							author: {
+								name: "SWCBot",
+								icon_url:
+									"https://cdn.discordapp.com/attachments/761194181083004928/822708112615276554/IMG-20210318-WA0024.jpg",
+								url: "https://discord.js.org",
+							},
+							color: 0x7ae5f5,
+							title: "HELP",
+							description: `A list of all commands!, To know about a command , use \`${prefix}help command_name\`  :)`,
+							fields: listOfCommands,
+							timestamp: new Date(),
+							footer: {
+								text: "SWCDiscordBot",
+							},
+						};
 
 
 
            
 
             return message.channel.send({embed : parentEmbed}).catch(error => {
-                message.reply("There was an error sending you, a list of commands!", error);
+				message.reply("There was an error sending you, a list of commands!", error);
+				console.log(error);
             })
         }
         else{
@@ -70,62 +72,55 @@ module.exports = {
                 }
                 
                 const childEmbed = {
-                    author: {
-                        name: 'SWCBot',
-                        icon_url: 'https://cutt.ly/YkcEYaG',
-                        url: 'https://discord.js.org',
-                    },
-                    color : 0x7ae5f5,
-                    title : `HELP  : ${commandHelpAsked.name.toUpperCase()}`,
-                    url : "",
-                    description : `Here are the details of the command ${commandHelpAsked.name}. :)`,
-                    fields : [
-                        { 
-                            name: '\u200B',
-                            value: '\u200B' 
-                        },
-                        {
-                            name: `Name :`,
-                            value: commandHelpAsked.name,
-                            
-                        },
-                        {   
-                            name: `Description : `,
-                            value : commandHelpAsked.description,
-                          
-                        },
-                        {
-                            name : "Usage : ",
-                            value : commandHelpAsked.usage,
-                            
-                        },
-                        {
-                            name : "Aliases :",
-                            value : commandHelpAsked.aliases,
-                            
-                        },
-                        {
-                            name : "Arguements necessary :",
-                            value : commandHelpAsked.args,
-                           
-                        },
-                        {
-                            name : "Room only command :",
-                            value : commandHelpAsked.guildOnly
-                        },
-                        { 
-                            name: '\u200B',
-                            value: '\u200B' 
-                        }
-
-                    ],
-                    timestamp : new Date(),
-                     footer: {
-                    text: 'SWCDiscordBot',
-                    }
-
-
-                }
+									author: {
+										name: "SWCBot",
+										icon_url:
+											"https://cdn.discordapp.com/attachments/761194181083004928/822708112615276554/IMG-20210318-WA0024.jpg",
+										url: "https://discord.js.org",
+									},
+									color: 0x7ae5f5,
+									title: `HELP  : ${commandHelpAsked.name.toUpperCase()}`,
+									url: "",
+									description: `Here are the details of the command ${commandHelpAsked.name}. :)`,
+									fields: [
+										{
+											name: "\u200B",
+											value: "\u200B",
+										},
+										{
+											name: `Name :`,
+											value: commandHelpAsked.name,
+										},
+										{
+											name: `Description : `,
+											value: commandHelpAsked.description,
+										},
+										{
+											name: "Usage : ",
+											value: commandHelpAsked.usage,
+										},
+										{
+											name: "Aliases :",
+											value: commandHelpAsked.aliases,
+										},
+										{
+											name: "Arguements necessary :",
+											value: commandHelpAsked.args,
+										},
+										{
+											name: "Room only command :",
+											value: commandHelpAsked.guildOnly,
+										},
+										{
+											name: "\u200B",
+											value: "\u200B",
+										},
+									],
+									timestamp: new Date(),
+									footer: {
+										text: "SWCDiscordBot",
+									},
+								};
                 data.push(`Name: ${commandHelpAsked.name} \nDescription: ${commandHelpAsked.description} \nUsage: ${commandHelpAsked.usage} \nAliases: ${commandHelpAsked.aliases} \nArguements Required: ${commandHelpAsked.args}` );
                 return message.reply({embed : childEmbed}).catch(error => {
                     message.reply("Some error occured!. ")

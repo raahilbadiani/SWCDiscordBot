@@ -9,7 +9,7 @@ module.exports = {
     aliases: ["p"],
     args: true,
     guildOnly: true,
-    usage: `\`${prefix}play\``,
+    usage: `\`${prefix}play <video>\``,
     async execute(msg, args) {
 
 

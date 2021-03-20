@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const ytdl = require('ytdl-core');	
+const ytdl = require('ytdl-core');
+client.music = require("discord.js-musicbot-addon");
 
 const fs = require('fs');			
 require('dotenv').config();			
@@ -23,9 +24,7 @@ for(const file of commandFiles){
 
 client.on('message',msg =>{			
 	
-	if(!msg.content.startsWith(prefix)||msg.author.bot) return; 
-	
-	
+	if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 	const args = msg.content.slice(prefix.length).trim().split(/ +/); 
 	const commandName = args.shift().toLowerCase(); 
 	
