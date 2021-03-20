@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const ytdl = require('ytdl-core');
-client.music = require("discord.js-musicbot-addon");
-
 const fs = require('fs');			
 require('dotenv').config();			
 const token = process.env.TOKEN;	
