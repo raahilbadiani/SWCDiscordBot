@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const ytdl = require('ytdl-core');	
-
+const ytdl = require('ytdl-core');
 const fs = require('fs');			
 require('dotenv').config();			
 const token = process.env.TOKEN;	
@@ -21,16 +20,12 @@ for(const file of commandFiles){
 	client.commands.set(command.name,command);
 }
 
-
-//=======
 client.on('guildMemberAdd',member =>{
 	member.send('Welcome to SWC disord server 😊');
 });
 
 client.on('message',msg =>{			//msg is the msg.content that we receive from user
-//>>>>>>> main
 	if(!msg.content.startsWith(prefix)||msg.author.bot) return; 
-	
 	
 	const args = msg.content.slice(prefix.length).trim().split(/ +/); 
 	const commandName = args.shift().toLowerCase(); 

@@ -8,6 +8,10 @@ module.exports = {
 	guildOnly: true,
 	usage: `\`${prefix}exit\``,
 	async execute(msg) {
-        msg.member.voice.channel.leave();
+		if (!msg.member.voice.channel) {
+			msg.channel.send("I'm not in any voice channel!");
+		}
+		msg.member.voice.channel.leave();
+		msg.channel.send("GoodBye! :)");
 	},
 };
