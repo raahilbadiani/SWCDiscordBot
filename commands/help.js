@@ -30,7 +30,7 @@ module.exports = {
                 }
                 ++i;
                 //console.log(cmd.description);
-               listOfCommands.push(obj)   
+               	listOfCommands.push(obj)   
             });
             listOfCommands.push({ name: '\u200B', value: '\u200B' });
             
@@ -56,7 +56,7 @@ module.exports = {
 
 
 
-           
+						
 
             return message.channel.send({embed : parentEmbed}).catch(error => {
 				message.reply("There was an error sending you, a list of commands!", error);
