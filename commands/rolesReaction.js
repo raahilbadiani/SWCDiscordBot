@@ -16,7 +16,7 @@ module.exports = {
   
     const desc=args.slice(1);
     const desc2=args.slice(1).join(" ");
-    if(!desc) return message.reply("Please add a valid description!\n  Example: !reactionrole #<channel> Coder 1️⃣ Designer 2️⃣")
+    if(!desc2) return message.reply("Please add a valid description!\n  Example: !reactionrole #<channel> Coder 1️⃣ Designer 2️⃣")
     
     //making arrays for roles and emojis
     const findRole=(roleName)=> message.guild.roles.cache.find(role=> role.name === roleName);
