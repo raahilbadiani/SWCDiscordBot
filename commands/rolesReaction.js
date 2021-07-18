@@ -32,15 +32,38 @@ module.exports = {
     }
 
     //sending msg on the corresponding channel and reacting with corressponding emojis
+    console.log(desc2);
+    const newDesc = desc2.split(" ");
+    let len=newDesc.length;
+    let finalDesc = "";
+    newDesc.forEach((item, index) => {
+      if (index % 2 == 0) {
+        finalDesc += item;
+        finalDesc += " ";
+      }
+      else {
+        finalDesc += item;
+        finalDesc += "\n";
+      }
+    })
     let embed= new MessageEmbed()
       .setColor("RANDOM")
       .setTitle("React to get a role")
-      .setDescription(desc2)
-  
-    let msgembed= await channelID.send(embed);
-    for(let i=0;i<s/2;i++){
-      await msgembed.react(emojis[i]);
+      .setDescription(finalDesc)
+    
+    try {
+      let msgembed = await channelID.send(embed);
+      for(let i=0;i<s/2;i++){
+        await msgembed.react(emojis[i]);
+      }
     }
+    catch (error) {
+      console.log(error);
+      message.channel.send('Some error occured')
+    }
+
+
+    message.channel.send(`Success!`);
     
     //adding a role
     client.on('messageReactionAdd', async (reaction, user)=>{
